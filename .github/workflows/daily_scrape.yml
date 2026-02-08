@@ -1,0 +1,45 @@
+name: Daily Lead Scrape
+
+on:
+  schedule:
+    # Runs at 11:00 UTC every day (6:00 AM EST)
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install requests beautifulsoup4 playwright pandas
+
+    - name: Install Playwright browsers
+      run: playwright install chromium
+
+    - name: Run daily scraper
+      run: python scripts/daily_scrape.py
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add docs/leads.json docs/leads.csv
+        # Only commit if there are changes
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update leads [skip ci]" && git push)
