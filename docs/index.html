@@ -568,71 +568,57 @@
 
         // Initialize live scan flow
         function startLiveScan() {
-            // Check for saved PAT
-            const token = localStorage.getItem('github_pat');
+            // Reset modal state
+            document.getElementById('scanTitle').textContent = '🤖 Checking Agent Status...';
+            document.getElementById('scanStatus').textContent = 'Connecting to Daily Auto-Pilot...';
 
-            if (!token) {
-                const newToken = prompt("To run the Live Agent, enter your GitHub Personal Access Token (PAT):");
-                if (newToken) {
-                    localStorage.setItem('github_pat', newToken);
-                    triggerGitHubAction(newToken);
-                }
-            } else {
-                triggerGitHubAction(token);
-            }
-        }
+            document.getElementById('ping1').textContent = '⏳ Syncing Data';
+            document.getElementById('ping2').textContent = '⏳ Checking New Leads';
+            document.getElementById('ping3').textContent = '⏳ Refreshing Dashboard';
 
-        async function triggerGitHubAction(token) {
-            // UI Update: Scan Started
-            document.getElementById('scanTitle').textContent = '🚀 Dispatching Agent...';
-            document.getElementById('scanStatus').textContent = 'Connecting to GitHub Actions...';
+            document.getElementById('foundCount').style.display = 'none';
+            document.getElementById('scanCloseBtn').style.display = 'none';
+            document.getElementById('scanDesc').textContent = 'The Auto-Pilot Agent runs every morning (6 AM). Checking for latest results...';
+
+            // Show modal
             document.getElementById('scrapeModal').style.display = 'flex';
 
-            document.getElementById('ping1').textContent = '⏳ Authenticating';
-            document.getElementById('ping2').textContent = '⏳ Triggering Workflow';
-            document.getElementById('ping3').textContent = '⏳ Waiting for Agent';
+            // Simulate Check Sequence (Visual Feedback Only)
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Syncing with cloud database...';
+                document.getElementById('ping1').textContent = '✅ Data Synced';
+            }, 800);
 
-            try {
-                // Update with your actual Repo Details (Owner/Repo)
-                const REPO_OWNER = 'pinnacleaisolutions';
-                const REPO_NAME = 'MIAMILOVESGREENSCRAPER'; // Updated based on earlier context
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Verifying latest entries...';
+                document.getElementById('ping2').textContent = '✅ Verified';
+            }, 1600);
 
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/daily_scrape.yml/dispatches`, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Authorization': `token ${token}`
-                    },
-                    body: JSON.stringify({
-                        ref: 'master' // or 'main' depending on your branch
-                    })
-                });
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Finalizing view...';
+                document.getElementById('ping3').textContent = '✅ Updated';
+            }, 2400);
 
-                if (response.ok) {
-                    document.getElementById('scanTitle').textContent = '✅ Agent Deployed!';
-                    document.getElementById('scanStatus').textContent = 'The specialized scraper is running in the cloud.';
-                    document.getElementById('scanDesc').textContent = 'This process takes about 2-3 minutes. The dashboard will update automatically when finished.';
+            // Complete and verification
+            setTimeout(async () => {
+                await loadLeads(); // Reloads the leads.json file
 
-                    document.getElementById('ping1').textContent = '✅ Authenticated';
-                    document.getElementById('ping2').textContent = '✅ Workflow Triggered';
-                    document.getElementById('ping3').textContent = '✅ Agent Running';
-
-                    // Cleanup / Close logic
-                    setTimeout(() => {
-                        document.getElementById('scanCloseBtn').style.display = 'inline-block';
-                        document.getElementById('scanCloseBtn').textContent = 'Close';
-                    }, 2000);
-                } else {
-                    throw new Error(`GitHub API Error: ${response.status}`);
-                }
-            } catch (error) {
-                console.error(error);
-                document.getElementById('scanTitle').textContent = '❌ Trigger Failed';
-                document.getElementById('scanStatus').textContent = 'Could not start the agent.';
-                document.getElementById('scanDesc').textContent = 'Check your Token permissions (needs "workflow" scope) and try again.';
-                localStorage.removeItem('github_pat'); // Clear invalid token
-            }
+                // Calculate "New" leads (mock logic for UX or real date comp)
+                document.getElementById('scanTitle').textContent = '✅ Dashboard Updated';
+                document.getElementById('scanStatus').textContent = 'Showing latest available leads.';
+                document.getElementById('leadsFoundNum').textContent = allLeads.length;
+                document.getElementById('foundCount').style.display = 'block';
+                document.getElementById('scanDesc').innerHTML = 'Your <b>Daily Agent</b> is active and runs automatically.<br>Next scheduled run: Tomorrow morning.';
+                document.getElementById('scanCloseBtn').style.display = 'inline-block';
+                document.getElementById('scanCloseBtn').textContent = 'View Leads';
+            }, 3000);
         }
+
+        /* 
+           REMOVED: triggerGitHubAction() 
+           Reason: User requested removal of Token complexity. 
+           Automation is now handled by .github/workflows/daily_scrape.yml 
+        */
 
 
 

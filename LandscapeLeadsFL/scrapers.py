@@ -204,30 +204,77 @@ class CraigslistScraper(BaseScraper):
 
 class GoogleSearchNavigator(BaseScraper):
     async def scrape(self):
-        if not search:
-            return []
         logger.info("Scout Agent: Fishing for Homeowners on Social Forums...")
         leads = []
-        queries = [
-            'site:reddit.com "miami" "looking for" landscaper',
-            'site:nextdoor.com "broward" "need" "landscaping"',
-            'site:reddit.com "palm beach" "recommend" landscaper',
-        ]
-        for q in queries:
-            try:
-                links = list(search(q, num_results=3, sleep_interval=4))
-                for link in links:
-                    leads.append(
-                        {
-                            "Source_URL": link,
-                            "Job_Title": f"Community Suggestion: {q[:30]}...",
-                            "Agency": "Community Discovery",
-                            "Closing_Date": "Ongoing",
-                            "Raw_Text": f"Resident discussing landscaping needs on {q}",
-                        }
-                    )
-            except Exception:
-                pass
+
+        # 1. Use Google Search Dorks (if library available)
+        if search:
+            queries = [
+                'site:reddit.com/r/miami "landscaper" "recommend"',
+                'site:reddit.com/r/fortlauderdale "landscaping" "need"',
+                'site:reddit.com/r/WestPalmBeach "landscaper" "hire"',
+                'site:nextdoor.com "broward" "need" "landscaping"',
+            ]
+            for q in queries:
+                try:
+                    # random delay to avoid rate limits
+                    await asyncio.sleep(random.uniform(2, 5))
+                    links = list(search(q, num_results=4, sleep_interval=5))
+                    for link in links:
+                        city = "South FL"
+                        if "miami" in q:
+                            city = "Miami"
+                        elif "fortlauderdale" in q:
+                            city = "Fort Lauderdale"
+                        elif "WestPalmBeach" in q:
+                            city = "West Palm Beach"
+                        elif "broward" in q:
+                            city = "Broward"
+
+                        leads.append(
+                            {
+                                "Source_URL": link,
+                                "Job_Title": f"Community Request: {city} Landscaping",
+                                "Agency": "Reddit Community",
+                                "Closing_Date": "Active Discussion",
+                                "Raw_Text": f"Homeowner discussion on {link} regarding landscaping in {city}",
+                                "Screened_At": datetime.now().isoformat(),
+                            }
+                        )
+                except Exception as e:
+                    logger.warning(f"Google dork failed for {q}: {e}")
+
+        # 2. Fallback: Direct Reddit Search URLs (Reliable, no library needed)
+        # If google fails or returns few results, we construct valid Reddit search URLs
+        if len(leads) < 5:
+            logger.info("Engaging Direct Reddit Search Fallback...")
+            reddit_searches = [
+                (
+                    "https://www.reddit.com/r/Miami/search/?q=landscaper&restrict_sr=1&sort=new",
+                    "Miami",
+                ),
+                (
+                    "https://www.reddit.com/r/fortlauderdale/search/?q=landscaping&restrict_sr=1&sort=new",
+                    "Ft Lauderdale",
+                ),
+                (
+                    "https://www.reddit.com/r/WestPalmBeach/search/?q=landscaper&restrict_sr=1&sort=new",
+                    "West Palm Beach",
+                ),
+            ]
+
+            for url, city in reddit_searches:
+                leads.append(
+                    {
+                        "Source_URL": url,
+                        "Job_Title": f"Browse Recent Requests: {city}",
+                        "Agency": "Reddit Direct Search",
+                        "Closing_Date": "Live Feed",
+                        "Raw_Text": f"Direct link to real-time search results for landscapers in {city}. Click to browse.",
+                        "Screened_At": datetime.now().isoformat(),
+                    }
+                )
+
         return leads
 
 
