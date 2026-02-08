@@ -201,6 +201,30 @@ class ScreenerAgent:
             # SCORING: Calculate homeowner intent confidence
             score = self._calculate_intent_score(combined)
 
+            # SPECIAL RULE: West Palm Beach Filtering (User Request: "Not WPB unless killer job")
+            # If lead is from Palm Beach area, strictly enforce "High Value" keywords
+            if any(k in combined for k in ["palm beach", "west palm", "wpb"]):
+                killer_keywords = [
+                    "estate",
+                    "mansion",
+                    "huge",
+                    "massive",
+                    "complete renovation",
+                    "design",
+                    "architect",
+                    "luxury",
+                    "project",
+                    "entire property",
+                    "install",
+                    "overhaul",
+                    "resort",
+                    "commercial grade",
+                ]
+                is_killer = any(k in combined for k in killer_keywords)
+                if not is_killer:
+                    # Penalize heavily if it's WPB but not "killer"
+                    score -= 100
+
             # Threshold: Must have high intent confidence
             if score >= 25:
                 lead["Score"] = score
