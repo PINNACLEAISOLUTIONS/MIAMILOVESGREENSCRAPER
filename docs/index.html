@@ -233,6 +233,19 @@
             </div>
         </div>
 
+        <div class="search-controls" style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+            <input type="text" id="leadSearch" placeholder="Filter by city or project type..." onkeyup="filterLeads()"
+                style="flex: 1; min-width: 200px; padding: 1rem 1.5rem; background: rgba(255,255,255,0.05); 
+                          border: 1px solid var(--glass-border); border-radius: 25px; color: #fff; 
+                          font-size: 1rem; outline: none;">
+            <button onclick="alert('🌴 To run live scraping, clone the repo and run: python main.py --mode full')"
+                style="background: linear-gradient(135deg, var(--neon-green), var(--neon-teal)); 
+                           color: #000; border: none; padding: 1rem 2rem; border-radius: 25px; 
+                           font-weight: 700; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
+                🔍 LIVE SCRAPE
+            </button>
+        </div>
+
         <div class="grid" id="leads-grid">
             <!-- Lead cards will be inserted here -->
         </div>
@@ -245,18 +258,18 @@
 
     <script>
         const leads = [
-            { agency: "Miami-Dade Parks", title: "Commercial Landscape Maintenance - Tropical Park", closing: "Feb 15, 2025", score: 18, url: "#", hot: true },
-            { agency: "Coral Gables", title: "Tree Trimming & Removal Services", closing: "Feb 20, 2025", score: 17, url: "#", hot: true },
-            { agency: "Broward County", title: "Irrigation System Installation", closing: "Feb 18, 2025", score: 16, url: "#", hot: true },
-            { agency: "City of Miami", title: "Streetscape Beautification Project", closing: "Feb 22, 2025", score: 15, url: "#", hot: true },
-            { agency: "Palm Beach County", title: "Native Plant Restoration", closing: "Feb 25, 2025", score: 14, url: "#", hot: false },
-            { agency: "Fort Lauderdale", title: "Beach Park Landscaping", closing: "Feb 28, 2025", score: 13, url: "#", hot: false },
-            { agency: "Hialeah", title: "Commercial Lawn Care Contract", closing: "Mar 1, 2025", score: 12, url: "#", hot: false },
-            { agency: "Pompano Beach", title: "Golf Course Maintenance", closing: "Mar 5, 2025", score: 11, url: "#", hot: false },
-            { agency: "Boca Raton", title: "Hardscape & Paver Installation", closing: "Mar 8, 2025", score: 10, url: "#", hot: false },
-            { agency: "Doral", title: "Commercial Property Landscaping", closing: "Mar 10, 2025", score: 9, url: "#", hot: false },
-            { agency: "Aventura", title: "Condo Landscape Management", closing: "Mar 12, 2025", score: 8, url: "#", hot: false },
-            { agency: "Weston", title: "HOA Landscaping Services", closing: "Mar 15, 2025", score: 7, url: "#", hot: false }
+            { agency: "Miami-Dade Parks", title: "Commercial Landscape Maintenance - Tropical Park", closing: "Feb 15, 2026", score: 18, url: "https://www.miamidade.gov/global/service.page?Mduid_service=ser1490814706420892", hot: true },
+            { agency: "Coral Gables", title: "Tree Trimming & Removal Services", closing: "Feb 20, 2026", score: 17, url: "https://www.coralgables.com/departments/public-works", hot: true },
+            { agency: "Broward County", title: "Irrigation System Installation", closing: "Feb 18, 2026", score: 16, url: "https://www.broward.org/Purchasing/Pages/default.aspx", hot: true },
+            { agency: "City of Miami", title: "Streetscape Beautification Project", closing: "Feb 22, 2026", score: 15, url: "https://www.miamigov.com/Government/Departments-Organizations/Department-of-Procurement", hot: true },
+            { agency: "Palm Beach County", title: "Native Plant Restoration", closing: "Feb 25, 2026", score: 14, url: "https://discover.pbcgov.org/Purchasing/Pages/default.aspx", hot: false },
+            { agency: "Fort Lauderdale", title: "Beach Park Landscaping", closing: "Feb 28, 2026", score: 13, url: "https://www.fortlauderdale.gov/government/departments-a-h/finance/procurement-services", hot: false },
+            { agency: "Hialeah", title: "Commercial Lawn Care Contract", closing: "Mar 1, 2026", score: 12, url: "https://www.hialeahfl.gov/176/Purchasing", hot: false },
+            { agency: "Pompano Beach", title: "Golf Course Maintenance", closing: "Mar 5, 2026", score: 11, url: "https://pompanobeachfl.gov/pages/purchasing", hot: false },
+            { agency: "Boca Raton", title: "Hardscape & Paver Installation", closing: "Mar 8, 2026", score: 10, url: "https://www.myboca.us/170/Purchasing", hot: false },
+            { agency: "Doral", title: "Commercial Property Landscaping", closing: "Mar 10, 2026", score: 9, url: "https://www.cityofdoral.com/government/finance/purchasing/", hot: false },
+            { agency: "Aventura", title: "Condo Landscape Management", closing: "Mar 12, 2026", score: 8, url: "https://www.cityofaventura.com/167/Purchasing", hot: false },
+            { agency: "Weston", title: "HOA Landscaping Services", closing: "Mar 15, 2026", score: 7, url: "https://www.westonfl.org/departments/finance/purchasing.aspx", hot: false }
         ];
 
         const grid = document.getElementById('leads-grid');
@@ -266,22 +279,37 @@
             return '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
         }
 
-        leads.forEach(lead => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                ${lead.hot ? '<div class="badge-hot">🔥 HOT LEAD</div>' : ''}
-                <div class="stars">${getStars(lead.score)}</div>
-                <div class="card-tag">${lead.agency}</div>
-                <div class="card-title">${lead.title}</div>
-                <div class="card-meta">
-                    <div><b>Closing:</b> ${lead.closing}</div>
-                    <div><b>Score:</b> ${lead.score}/20</div>
-                </div>
-                <a href="${lead.url}" class="btn">View Details</a>
-            `;
-            grid.appendChild(card);
-        });
+        function renderLeads(leadsToRender) {
+            grid.innerHTML = '';
+            leadsToRender.forEach(lead => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    ${lead.hot ? '<div class="badge-hot">🔥 HOT LEAD</div>' : ''}
+                    <div class="stars">${getStars(lead.score)}</div>
+                    <div class="card-tag">${lead.agency}</div>
+                    <div class="card-title">${lead.title}</div>
+                    <div class="card-meta">
+                        <div><b>Closing:</b> ${lead.closing}</div>
+                        <div><b>Score:</b> ${lead.score}/20</div>
+                    </div>
+                    <a href="${lead.url}" target="_blank" class="btn">View Details</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterLeads() {
+            const term = document.getElementById('leadSearch').value.toLowerCase();
+            const filtered = leads.filter(l =>
+                l.title.toLowerCase().includes(term) ||
+                l.agency.toLowerCase().includes(term)
+            );
+            renderLeads(filtered);
+        }
+
+        // Initial render
+        renderLeads(leads);
     </script>
 </body>
 
