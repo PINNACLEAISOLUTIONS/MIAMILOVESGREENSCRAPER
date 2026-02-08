@@ -242,22 +242,205 @@
         </div>
 
         <div id="scrapeModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; 
-             background:rgba(0,0,0,0.85); z-index:1000; justify-content:center; align-items:center;">
-            <div style="background: var(--bg-dark); border: 2px solid var(--neon-green); border-radius: 20px; 
-                        padding: 2rem; max-width: 400px; margin: 2rem; text-align:center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🌴</div>
-                <h3 style="color: var(--neon-green); margin-bottom: 1rem;">Scanning South Florida...</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    Our AI is actively finding new landscaping opportunities in Miami-Dade, Broward & Palm Beach
-                    counties.
-                </p>
-                <p style="color: var(--neon-teal); font-weight: 600; margin-bottom: 1.5rem;">
-                    📞 Call (305) 555-GREEN for premium live leads
-                </p>
-                <button onclick="document.getElementById('scrapeModal').style.display='none'" style="background: var(--neon-green); color: #000; border: none; 
-                               padding: 0.8rem 2rem; border-radius: 20px; font-weight: 700; cursor: pointer;">
-                    Got it!
-                </button>
+             background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;">
+            <div class="scan-modal">
+                <style>
+                    .scan-modal {
+                        background: linear-gradient(145deg, #0a1f15, #051510);
+                        border: 2px solid var(--neon-green);
+                        border-radius: 24px;
+                        padding: 2.5rem;
+                        max-width: 420px;
+                        margin: 1rem;
+                        text-align: center;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 0 60px rgba(0, 255, 136, 0.3);
+                    }
+
+                    .scan-modal::before {
+                        content: '';
+                        position: absolute;
+                        top: -50%;
+                        left: -50%;
+                        width: 200%;
+                        height: 200%;
+                        background: conic-gradient(from 0deg, transparent, rgba(0, 255, 136, 0.1), transparent 30%);
+                        animation: rotate 3s linear infinite;
+                    }
+
+                    @keyframes rotate {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    .radar-container {
+                        position: relative;
+                        width: 120px;
+                        height: 120px;
+                        margin: 0 auto 1.5rem;
+                    }
+
+                    .radar-ring {
+                        position: absolute;
+                        border: 2px solid var(--neon-green);
+                        border-radius: 50%;
+                        animation: pulse 2s ease-out infinite;
+                    }
+
+                    .radar-ring:nth-child(1) {
+                        width: 40px;
+                        height: 40px;
+                        top: 40px;
+                        left: 40px;
+                        animation-delay: 0s;
+                    }
+
+                    .radar-ring:nth-child(2) {
+                        width: 80px;
+                        height: 80px;
+                        top: 20px;
+                        left: 20px;
+                        animation-delay: 0.5s;
+                    }
+
+                    .radar-ring:nth-child(3) {
+                        width: 120px;
+                        height: 120px;
+                        top: 0;
+                        left: 0;
+                        animation-delay: 1s;
+                    }
+
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(0.8);
+                            opacity: 1;
+                        }
+
+                        100% {
+                            transform: scale(1.5);
+                            opacity: 0;
+                        }
+                    }
+
+                    .radar-dot {
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        background: var(--neon-green);
+                        border-radius: 50%;
+                        top: 52px;
+                        left: 52px;
+                        box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+                        animation: glow 1s ease-in-out infinite alternate;
+                    }
+
+                    @keyframes glow {
+                        0% {
+                            box-shadow: 0 0 10px var(--neon-green);
+                        }
+
+                        100% {
+                            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green);
+                        }
+                    }
+
+                    .scan-text {
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .typing-text {
+                        display: inline-block;
+                        overflow: hidden;
+                        border-right: 2px solid var(--neon-green);
+                        white-space: nowrap;
+                        animation: typing 2s steps(20) infinite, blink 0.5s step-end infinite alternate;
+                    }
+
+                    @keyframes typing {
+
+                        0%,
+                        100% {
+                            width: 0;
+                        }
+
+                        50% {
+                            width: 100%;
+                        }
+                    }
+
+                    @keyframes blink {
+                        50% {
+                            border-color: transparent;
+                        }
+                    }
+
+                    .location-ping {
+                        display: inline-block;
+                        padding: 0.3rem 0.8rem;
+                        margin: 0.3rem;
+                        background: rgba(0, 255, 136, 0.1);
+                        border: 1px solid rgba(0, 255, 136, 0.3);
+                        border-radius: 20px;
+                        font-size: 0.8rem;
+                        color: var(--neon-teal);
+                        animation: fadeIn 0.5s ease-out forwards;
+                        opacity: 0;
+                    }
+
+                    .location-ping:nth-child(1) {
+                        animation-delay: 0.5s;
+                    }
+
+                    .location-ping:nth-child(2) {
+                        animation-delay: 1s;
+                    }
+
+                    .location-ping:nth-child(3) {
+                        animation-delay: 1.5s;
+                    }
+
+                    @keyframes fadeIn {
+                        to {
+                            opacity: 1;
+                        }
+                    }
+                </style>
+
+                <div class="radar-container">
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-dot"></div>
+                </div>
+
+                <div class="scan-text">
+                    <h3 style="color: var(--neon-green); margin-bottom: 0.5rem; font-size: 1.5rem;">
+                        🤖 AI Agent Active
+                    </h3>
+                    <p style="color: var(--neon-teal); margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span class="typing-text">Scanning for leads...</span>
+                    </p>
+
+                    <div style="margin: 1rem 0;">
+                        <span class="location-ping">📍 Miami-Dade</span>
+                        <span class="location-ping">📍 Broward</span>
+                        <span class="location-ping">📍 Palm Beach</span>
+                    </div>
+
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 1rem 0;">
+                        Our AI agent is crawling Craigslist, Reddit, and government bids for landscaping opportunities.
+                    </p>
+
+                    <button onclick="document.getElementById('scrapeModal').style.display='none'" style="background: linear-gradient(135deg, var(--neon-green), #00b894); color: #000; border: none; 
+                                   padding: 1rem 2.5rem; border-radius: 25px; font-weight: 700; cursor: pointer;
+                                   font-size: 1rem; margin-top: 0.5rem; transition: all 0.3s;">
+                        ✓ Continue
+                    </button>
+                </div>
             </div>
         </div>
 
