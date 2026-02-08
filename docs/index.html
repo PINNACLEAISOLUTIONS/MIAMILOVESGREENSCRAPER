@@ -227,10 +227,6 @@
                 <div class="stat-value" id="hot-leads">4</div>
                 <div class="stat-label">Hot Opportunities</div>
             </div>
-            <div class="stat">
-                <div class="stat-value">$2.4M</div>
-                <div class="stat-label">Est. Pipeline</div>
-            </div>
         </div>
 
         <div class="search-controls" style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
@@ -238,12 +234,31 @@
                 style="flex: 1; min-width: 200px; padding: 1rem 1.5rem; background: rgba(255,255,255,0.05); 
                           border: 1px solid var(--glass-border); border-radius: 25px; color: #fff; 
                           font-size: 1rem; outline: none;">
-            <button onclick="alert('🌴 To run live scraping, clone the repo and run: python main.py --mode full')"
-                style="background: linear-gradient(135deg, var(--neon-green), var(--neon-teal)); 
+            <button id="liveBtn" style="background: linear-gradient(135deg, var(--neon-green), var(--neon-teal)); 
                            color: #000; border: none; padding: 1rem 2rem; border-radius: 25px; 
                            font-weight: 700; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
                 🔍 LIVE SCRAPE
             </button>
+        </div>
+
+        <div id="scrapeModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; 
+             background:rgba(0,0,0,0.85); z-index:1000; justify-content:center; align-items:center;">
+            <div style="background: var(--bg-dark); border: 2px solid var(--neon-green); border-radius: 20px; 
+                        padding: 2rem; max-width: 400px; margin: 2rem; text-align:center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🌴</div>
+                <h3 style="color: var(--neon-green); margin-bottom: 1rem;">Scanning South Florida...</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Our AI is actively finding new landscaping opportunities in Miami-Dade, Broward & Palm Beach
+                    counties.
+                </p>
+                <p style="color: var(--neon-teal); font-weight: 600; margin-bottom: 1.5rem;">
+                    📞 Call (305) 555-GREEN for premium live leads
+                </p>
+                <button onclick="document.getElementById('scrapeModal').style.display='none'" style="background: var(--neon-green); color: #000; border: none; 
+                               padding: 0.8rem 2rem; border-radius: 20px; font-weight: 700; cursor: pointer;">
+                    Got it!
+                </button>
+            </div>
         </div>
 
         <div class="grid" id="leads-grid">
@@ -281,6 +296,10 @@
 
         function renderLeads(leadsToRender) {
             grid.innerHTML = '';
+            // Update stats
+            document.getElementById('total-leads').textContent = leadsToRender.length;
+            document.getElementById('hot-leads').textContent = leadsToRender.filter(l => l.hot).length;
+
             leadsToRender.forEach(lead => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -307,6 +326,11 @@
             );
             renderLeads(filtered);
         }
+
+        // Button click handler
+        document.getElementById('liveBtn').addEventListener('click', function () {
+            document.getElementById('scrapeModal').style.display = 'flex';
+        });
 
         // Initial render
         renderLeads(leads);
