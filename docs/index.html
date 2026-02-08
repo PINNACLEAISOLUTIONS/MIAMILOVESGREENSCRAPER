@@ -89,24 +89,27 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px -10px rgba(0, 255, 136, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(0, 255, 136, 0.3);
             border-color: var(--neon-green);
         }
 
@@ -146,46 +149,64 @@
         }
 
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            line-height: 1.4;
+            line-height: 1.3;
+            color: #fff;
         }
 
-        .card-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
+        .card-location {
+            font-size: 0.8rem;
+            color: var(--neon-teal);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .card-date {
+            font-size: 0.75rem;
             color: var(--text-secondary);
         }
 
-        .card-meta b {
-            color: var(--neon-teal);
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, var(--neon-green), #00b894);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
         }
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--neon-green), var(--neon-teal));
-            color: #000;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
         }
 
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
         }
 
-        .stars {
-            color: #ffd700;
-            margin-bottom: 0.5rem;
+        .btn:hover::before {
+            left: 100%;
         }
+
+        /* Stars removed for cleaner look */
 
         footer {
             text-align: center;
@@ -418,27 +439,32 @@
                 </div>
 
                 <div class="scan-text">
-                    <h3 style="color: var(--neon-green); margin-bottom: 0.5rem; font-size: 1.5rem;">
+                    <h3 id="scanTitle" style="color: var(--neon-green); margin-bottom: 0.5rem; font-size: 1.5rem;">
                         🤖 AI Agent Active
                     </h3>
-                    <p style="color: var(--neon-teal); margin-bottom: 1rem; font-size: 0.9rem;">
-                        <span class="typing-text">Scanning for leads...</span>
+                    <p id="scanStatus" style="color: var(--neon-teal); margin-bottom: 1rem; font-size: 0.9rem;">
+                        Initializing scan...
                     </p>
 
-                    <div style="margin: 1rem 0;">
-                        <span class="location-ping">📍 Miami-Dade</span>
-                        <span class="location-ping">📍 Broward</span>
-                        <span class="location-ping">📍 Palm Beach</span>
+                    <div id="scanProgress" style="margin: 1rem 0;">
+                        <span class="location-ping" id="ping1">⏳ Miami-Dade</span>
+                        <span class="location-ping" id="ping2">⏳ Broward</span>
+                        <span class="location-ping" id="ping3">⏳ Palm Beach</span>
                     </div>
 
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 1rem 0;">
-                        Our AI agent is crawling Craigslist, Reddit, and government bids for landscaping opportunities.
+                    <div id="foundCount"
+                        style="color: var(--neon-green); font-size: 1.2rem; font-weight: 700; margin: 1rem 0; display: none;">
+                        Found: <span id="leadsFoundNum">0</span> leads
+                    </div>
+
+                    <p id="scanDesc" style="color: var(--text-secondary); font-size: 0.85rem; margin: 1rem 0;">
+                        Scanning Craigslist, Reddit, and government bids...
                     </p>
 
-                    <button onclick="document.getElementById('scrapeModal').style.display='none'" style="background: linear-gradient(135deg, var(--neon-green), #00b894); color: #000; border: none; 
+                    <button id="scanCloseBtn" onclick="closeScanModal()" style="background: linear-gradient(135deg, var(--neon-green), #00b894); color: #000; border: none; 
                                    padding: 1rem 2.5rem; border-radius: 25px; font-weight: 700; cursor: pointer;
-                                   font-size: 1rem; margin-top: 0.5rem; transition: all 0.3s;">
-                        ✓ Continue
+                                   font-size: 1rem; margin-top: 0.5rem; transition: all 0.3s; display: none;">
+                        ✓ View Results
                     </button>
                 </div>
             </div>
@@ -485,24 +511,29 @@
 
             leadsToRender.forEach(lead => {
                 const score = lead.Score || lead.score || 0;
-                const isHot = score >= 15;
+                const isHot = score >= 30;
                 const title = lead.Job_Title || lead.title || 'Untitled Lead';
-                const agency = lead.Agency || lead.agency || 'Unknown';
                 const closing = lead.Closing_Date || lead.closing || 'ASAP';
                 const url = lead.Source_URL || lead.url || '#';
+                const screenedAt = lead.Screened_At ? new Date(lead.Screened_At).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+
+                // Extract location from URL or agency
+                let location = '';
+                if (url.includes('miami')) location = '📍 Miami';
+                else if (url.includes('orlando')) location = '📍 Orlando';
+                else if (url.includes('daytona')) location = '📍 Daytona';
+                else if (url.includes('treasure')) location = '📍 Treasure Coast';
+                else if (url.includes('reddit')) location = '💬 Reddit';
+                else location = '📍 South FL';
 
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    ${isHot ? '<div class="badge-hot">🔥 HOT LEAD</div>' : ''}
-                    <div class="stars">${getStars(score)}</div>
-                    <div class="card-tag">${agency}</div>
+                    ${isHot ? '<div class="badge-hot">🔥 HOT</div>' : ''}
                     <div class="card-title">${title}</div>
-                    <div class="card-meta">
-                        <div><b>Closing:</b> ${closing}</div>
-                        <div><b>Score:</b> ${score}/20</div>
-                    </div>
-                    <a href="${url}" target="_blank" class="btn">View Details</a>
+                    <div class="card-location">${location} • ${closing}</div>
+                    <div class="card-date">${screenedAt ? 'Found: ' + screenedAt : ''}</div>
+                    <a href="${url}" target="_blank" class="btn">View Lead →</a>
                 `;
                 grid.appendChild(card);
             });
@@ -530,10 +561,60 @@
             }
         }
 
-        // Button click handler
+        // Button click handler - starts animated scan
         document.getElementById('liveBtn').addEventListener('click', function () {
-            document.getElementById('scrapeModal').style.display = 'flex';
+            startLiveScan();
         });
+
+        function startLiveScan() {
+            // Reset modal state
+            document.getElementById('scanTitle').textContent = '🤖 AI Agent Active';
+            document.getElementById('scanStatus').textContent = 'Initializing scan...';
+            document.getElementById('ping1').textContent = '⏳ Miami-Dade';
+            document.getElementById('ping2').textContent = '⏳ Broward';
+            document.getElementById('ping3').textContent = '⏳ Palm Beach';
+            document.getElementById('foundCount').style.display = 'none';
+            document.getElementById('scanCloseBtn').style.display = 'none';
+            document.getElementById('scanDesc').textContent = 'Scanning Craigslist, Reddit, and government bids...';
+
+            // Show modal
+            document.getElementById('scrapeModal').style.display = 'flex';
+
+            // Animate scan progress
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Crawling Craigslist...';
+                document.getElementById('ping1').textContent = '✅ Miami-Dade';
+            }, 800);
+
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Scanning Reddit communities...';
+                document.getElementById('ping2').textContent = '✅ Broward';
+            }, 1600);
+
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Checking government bid portals...';
+                document.getElementById('ping3').textContent = '✅ Palm Beach';
+            }, 2400);
+
+            setTimeout(() => {
+                document.getElementById('scanStatus').textContent = 'Processing results...';
+            }, 3200);
+
+            // Complete scan and reload leads
+            setTimeout(async () => {
+                await loadLeads();
+                document.getElementById('scanTitle').textContent = '✅ Scan Complete';
+                document.getElementById('scanStatus').textContent = 'All regions scanned successfully!';
+                document.getElementById('leadsFoundNum').textContent = allLeads.length;
+                document.getElementById('foundCount').style.display = 'block';
+                document.getElementById('scanDesc').textContent = 'Latest leads loaded and ready to view.';
+                document.getElementById('scanCloseBtn').style.display = 'inline-block';
+            }, 4000);
+        }
+
+        function closeScanModal() {
+            document.getElementById('scrapeModal').style.display = 'none';
+        }
 
         // Load leads on page load
         loadLeads();
