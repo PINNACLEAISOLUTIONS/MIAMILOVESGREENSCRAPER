@@ -1,0 +1,24 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Hunting for Resident Projects...
+INFO:scrapers:Scout Agent: Hunting for Homeowner Gigs (Improved Linguistic Logic)...
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/lbg?query=stump
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=landscaping
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=grass+removal
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=sod
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/lbg?query=mulch
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=hedges
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=drainage
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=landscaping
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=stump
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=mulch
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=pavers
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=mulch
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=pavers
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=drainage
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/pbc/lbg?query=pavers
+INFO:scrapers:Resident Scout: Successfully recovered 0 potential resident projects.
+INFO:scrapers:Scout Agent: Fishing for Homeowners on Community Forums...
+INFO:scrapers:Scouting Government Project Bids...
+INFO:scrapers:Scouting Institutional Project Requests (Broward)...
+INFO:agents:Scout Agent: Collected 0 potential raw leads.
+WARNING:LandscapeLeadsFL:No raw leads found during discovery phase.

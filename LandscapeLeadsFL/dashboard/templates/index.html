@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandscapeLeadsFL Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a08;
+            --glass: rgba(20, 40, 30, 0.6);
+            --glass-border: rgba(46, 204, 113, 0.2);
+            --neon-green: #00ff88;
+            --neon-teal: #00f3ff;
+            --text-main: #e0eef5;
+            --text-dim: #8fa3a0;
+            --card-shadow: 0 8px 32px 0 rgba(0, 255, 136, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 40%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            perspective: 1000px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--card-shadow);
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotateX(1deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+        }
+
+        .header-content h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-green) 50%, var(--neon-teal) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .header-content p {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .stats-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--neon-green);
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .stats-badge span {
+            display: block;
+            font-size: 2.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+        }
+
+        .stats-badge div {
+            font-size: 0.8rem;
+            color: var(--neon-teal);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .search-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.2rem 2rem;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-input:focus {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .btn-discovery {
+            background: linear-gradient(135deg, var(--neon-green) 0%, #00b894 100%);
+            color: #050a08;
+            border: none;
+            padding: 0 3rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-discovery:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow: 0 20px 50px -10px rgba(0, 255, 136, 0.3);
+            border-color: var(--neon-green);
+            background: linear-gradient(145deg, rgba(20, 60, 40, 0.8), rgba(10, 20, 15, 0.9));
+        }
+
+        .badge-glow {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            color: #fff;
+        }
+
+        .stars {
+            color: #FCD34D;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(0 0 5px rgba(252, 211, 77, 0.5));
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .meta-item b {
+            color: var(--neon-green);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1.2rem;
+            background: transparent;
+            color: var(--neon-green);
+            text-decoration: none;
+            border: 1px solid var(--neon-green);
+            border-radius: 16px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .stats-badge span {
+                font-size: 2rem;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .search-controls {
+                flex-direction: column;
+            }
+
+            .btn-discovery {
+                padding: 1.2rem;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>MIAMI LOVES GREEN LANDSCAPING SCRAPER</h1>
+                <p>Advanced Landscaping Project Discovery • South Florida</p>
+            </div>
+            <div class="stats-badge">
+                <span id="count">0</span>
+                <div>Active Leads</div>
+            </div>
+        </header>
+
+        <div class="search-controls">
+            <input type="text" id="leadSearch" class="search-input"
+                placeholder="Filter by city, project type, or keyword..." onkeyup="filterLeads()">
+            <button class="btn-discovery" id="discoverBtn" onclick="runDiscovery()">Scan for New Projects</button>
+        </div>
+
+        <div class="grid" id="leads-grid">
+            <!-- Leads will be injected here -->
+        </div>
+    </div>
+
+    <script>
+        let allLeads = [];
+
+        function getStars(score) {
+            const count = Math.min(5, Math.ceil(score / 5));
+            return '★'.repeat(count) + '☆'.repeat(5 - count);
+        }
+
+        async function runDiscovery() {
+            const btn = document.getElementById('discoverBtn');
+            btn.innerText = 'Hunting Projects...';
+            btn.style.opacity = '0.5';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/api/discover', { method: 'POST' });
+                if (response.ok) {
+                    setTimeout(() => {
+                        fetchLeads();
+                        btn.innerText = 'Scan for New Projects';
+                        btn.style.opacity = '1';
+                        btn.disabled = false;
+                    }, 10000); // Wait for initial batch
+                }
+            } catch (err) {
+                console.error(err);
+                btn.innerText = 'Scan for New Projects';
+                btn.disabled = false;
+            }
+        }
+
+        async function fetchLeads() {
+            try {
+                const response = await fetch('/api/leads');
+                allLeads = await response.json();
+                renderLeads(allLeads);
+            } catch (error) {
+                console.error('Error fetching leads:', error);
+            }
+        }
+
+        function renderLeads(leads) {
+            const grid = document.getElementById('leads-grid');
+            const count = document.getElementById('count');
+
+            count.innerText = leads.length;
+            grid.innerHTML = '';
+
+            if (leads.length === 0) {
+                grid.innerHTML = '<div class="no-results">No leads found matching your criteria.</div>';
+                return;
+            }
+
+            // Sort by score descending
+            leads.sort((a, b) => b.Score - a.Score);
+
+            leads.forEach((lead, index) => {
+                const isHighPriority = lead.Score >= 15;
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${index * 0.05}s`;
+
+                card.innerHTML = `
+                    ${isHighPriority ? '<div class="badge-glow">HOT LEAD</div>' : ''}
+                    <div class="stars">${getStars(lead.Score)}</div>
+                    <div class="tag">${lead.Agency}</div>
+                    <div class="title">${lead.Job_Title}</div>
+                    <div class="meta-grid">
+                        <div class="meta-item"><b>Closing</b> ${lead.Closing_Date}</div>
+                        <div class="meta-item"><b>Intent Score</b> ${lead.Score}/20</div>
+                    </div>
+                    <a href="${lead.Source_URL}" target="_blank" class="btn">View Details</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterLeads() {
+            const term = document.getElementById('leadSearch').value.toLowerCase();
+            const filtered = allLeads.filter(l =>
+                l.Job_Title.toLowerCase().includes(term) ||
+                l.Agency.toLowerCase().includes(term) ||
+                (l.Raw_Text && l.Raw_Text.toLowerCase().includes(term))
+            );
+            renderLeads(filtered);
+        }
+
+        fetchLeads();
+        // Auto refresh every 30 seconds
+        setInterval(fetchLeads, 30000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Starting discovery across Government, Craigslist, and Social portals...
+INFO:scrapers:Scouting Miami-Dade Solicitations for Landscape Projects...
+INFO:scrapers:Scouting Broward County BPRO for Landscape Projects...
+INFO:scrapers:Scout Agent: Launching Regional Landscape Discovery (Fixed URLs)...
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/bbb?query=landscape+design
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/bbb?query=paver+repair
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/bbb?query=garden+overhaul
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=landscape+design
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/sww?query=drainage+landscape
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/sww?query=paver+repair
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/pbc/lgs?query=hardscape
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/sww?query=mulch
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/lgs?query=drainage+landscape
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=mulch
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=hardscape
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/brw/bbb?query=rock+garden
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/pbc/sww?query=landscaping+installation
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=drainage+landscape
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/pbc/sww?query=sod+installation
+INFO:scrapers:Smart Scout: Recovered 0 high-value project leads.
+INFO:scrapers:Scout Agent: Searching web for independent landscape projects...
+INFO:agents:Scout Agent: Discovered 0 potential raw leads.
+WARNING:LandscapeLeadsFL:No raw leads found during discovery phase.

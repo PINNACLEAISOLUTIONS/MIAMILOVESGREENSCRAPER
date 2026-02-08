@@ -1,0 +1,21 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Searching for Homeowner Projects and Community Requests...
+INFO:scrapers:Scout Agent: Hunting for Homeowner Gigs specifically...
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=landscape+quote
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/lbg?query=sod
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/grd?query=sod
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=planting+trees
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=yard+cleanup
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/grd?query=looking+for+landscaper
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=remove+grass
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/lbg?query=yard+cleanup
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/lbg?query=garden+designer
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/pbc/lbg?query=fix+drainage
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/pbc/grd?query=sod
+INFO:scrapers:Scanning Resident Portal: https://miami.craigslist.org/search/brw/lbg?query=pavers+help
+INFO:scrapers:Resident Scout: Successfully isolated 0 true homeowner requests.
+INFO:scrapers:Scout Agent: Fishing in Community Forums for Project Leads...
+INFO:scrapers:Scouting High-Value Regional Bids...
+INFO:scrapers:Scouting Regional Institutional Opportunities...
+INFO:agents:Scout Agent: Gathered 0 potential raw sources.
+WARNING:LandscapeLeadsFL:No raw leads found during discovery phase.

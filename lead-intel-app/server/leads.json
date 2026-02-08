@@ -1,0 +1,414 @@
+[
+  {
+    "Source_URL": "https://miami.craigslist.org/pbc/lbg/d/boca-raton-need-tall-strong-guy-to-help/7912925933.html",
+    "Job_Title": "Need a Tall Strong Guy to help me with High End Painting",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Need a Tall Strong Guy to help me with High End Painting. Context: need a tall strong guy to help me with high end paintingneed a tall strong guy to help me with high end painting",
+    "Score": 40,
+    "Screened_At": "2026-02-07T16:13:10.860769"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/pbc/lbg/d/west-palm-beach-need-someone-to-load-my/7912547412.html",
+    "Job_Title": "Need someone to load my van at the south Florida fairgrounds",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Need someone to load my van at the south Florida fairgrounds. Context: need someone to load my van at the south florida fairgroundsneed someone to load my van at the south florida fairgrounds",
+    "Score": 40
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/pbc/lbg/d/west-palm-beach-need-helper-for/7912243236.html",
+    "Job_Title": "I need 1 helper for tomorrow morning",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: I need 1 helper for tomorrow morning. Context: i need 1 helper for tomorrow morningi need 1 helper for tomorrow morning",
+    "Score": 40
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/pbc/lbg/d/boca-raton-need-tall-strong-guy-to-help/7909044118.html",
+    "Job_Title": "Need a Tall Strong Guy to help me with High End Painting",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Need a Tall Strong Guy to help me with High End Painting. Context: need a tall strong guy to help me with high end paintingneed a tall strong guy to help me with high end painting",
+    "Score": 40
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/forhire/comments/1qqhw0t/for_hire_i_will_audit_your_google_ads_to_help_you/",
+    "Job_Title": "[For Hire] I will audit your Google Ads to help you increase ROI",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: [For Hire] I will audit your Google Ads to help you increase ROI",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:00.934045",
+    "Score": 40,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/forhire/comments/w67cfu/for_hire_looking_for_light_work_to_support_me/",
+    "Job_Title": "[For Hire] Looking for light work to support me whilst I work on my passion project",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: [For Hire] Looking for light work to support me whilst I work on my passion project",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:07.635126",
+    "Score": 40,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/lbg/d/hollywood-seeking-qualified-mechanic-to/7912045040.html",
+    "Job_Title": "Seeking a qualified mechanic to repair my cargo van/truck",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Seeking a qualified mechanic to repair my cargo van/truck. Context: seeking a qualified mechanic to repair my cargo van/truckseeking a qualified mechanic to repair my cargo van/truck",
+    "Score": 40,
+    "Screened_At": "2026-02-07T15:41:08.628514"
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/HomeImprovement/comments/1qwow97/what_should_i_do/",
+    "Job_Title": "What should I do?",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: What should I do?",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:58.841068",
+    "Score": 30,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/hss/d/fort-lauderdale-builder-handyman-for/7912039531.html",
+    "Job_Title": "",
+    "Agency": "Verified Resident / Poster",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Poster Request: . Desc: fort lauderdalebuilder/handyman for hire- jack of trades1/30",
+    "Score": 30
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/hss/d/fort-lauderdale-realignment-coalition/7912045949.html",
+    "Job_Title": "",
+    "Agency": "Verified Resident / Poster",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Poster Request: . Desc: davie - 10 mile radiusrealignment coalition - do you need help with daily tasks, shopping, peer suppor1/30",
+    "Score": 30
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/mdc/grd/d/miami-l-s-a-feet-tall-1600-or-feet-tall/7911505508.html",
+    "Job_Title": "---C L U S I A S--- 4 feet tall 16.00 or 3 feet tall",
+    "Agency": "Verified Resident / Poster",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Poster Request: ---C L U S I A S--- 4 feet tall 16.00 or 3 feet tall. Desc: \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022---c l u s i a s--- 4 feet tall 16.00 or 3 feet tall1/28sw miami, (the redlands)$5---c l u s i a s--- 4 feet tall 16.00 or 3 feet tall",
+    "Score": 30
+  },
+  {
+    "Source_URL": "https://orlando.craigslist.org/lbg/d/windermere-urgent-need-handyman/7909771678.html",
+    "Job_Title": "",
+    "Agency": "Verified Resident / Poster",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Poster Request: . Desc: windermereurgent need \u2013 handyman / landscaper1/19$15 - $18 per hour",
+    "Score": 30
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/forhire/comments/1qyfbly/for_hire_character_design_character_concept_2d/",
+    "Job_Title": "[FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: [FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:00.898379",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/forhire/comments/1qq9x8z/for_hire_character_design_character_concept_2d/",
+    "Job_Title": "[FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: [FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:00.949502",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/forhire/comments/1qdm53j/for_hire_character_design_character_concept_2d/",
+    "Job_Title": "[FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: [FOR HIRE] Character Design, Character Concept, 2D Digital illustration, Landscape, Portrait, Book covers, DnD character design, Splash art... More info in comment!",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:00.965260",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://old.reddit.com/r/HomeImprovement/comments/1qw962v/lets_have_some_fun_with_my_basement/",
+    "Job_Title": "Let's have some fun with my basement!",
+    "Agency": "Reddit Community",
+    "Closing_Date": "Ongoing",
+    "Raw_Text": "Reddit post: Let's have some fun with my basement!",
+    "Source_Platform": "Reddit",
+    "Discovered_At": "2026-02-07T15:40:58.853526",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/lbg/d/coral-springs-necesito-una-que-me-ayude/7909257132.html",
+    "Job_Title": "Necesito una que me ayude este Lunes a mover cosas en mi trailer",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Necesito una que me ayude este Lunes a mover cosas en mi trailer. Context: necesito una que me ayude este lunes a mover cosas en mi trailernecesito una que me ayude este lunes a mover cosas en mi trailer",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7913522982.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/trb/d/pompano-beach-new-x-24-heavy-i-beam/7913499630.html",
+    "Job_Title": "New 7' x 24' Heavy 8\" I-BEAM Frame Equipment Trailer TOOL BOX ~ Rampag",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: New 7' x 24' Heavy 8\" I-BEAM Frame Equipment Trailer TOOL BOX ~ Rampag. Context: new 7' x 24' heavy 8\" i-beam frame equipment trailer tool box ~ rampagnew 7' x 24' heavy 8\" i-beam frame equipment trailer tool box ~ rampag",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7913281481.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7912589166.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7911996121.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7911828036.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7911617841.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.629521"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7911361390.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/trb/d/pompano-beach-new-x-22-beam-frame/7911200484.html",
+    "Job_Title": "New 7' x 22' I-BEAM Frame Equipment TOOLBOX Trailer w/ Spring Assisted",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: New 7' x 22' I-BEAM Frame Equipment TOOLBOX Trailer w/ Spring Assisted. Context: new 7' x 22' i-beam frame equipment toolbox trailer w/ spring assistednew 7' x 22' i-beam frame equipment toolbox trailer w/ spring assisted",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7910617296.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7910383473.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/trb/d/pompano-beach-new-x-24-heavy-i-beam/7910185749.html",
+    "Job_Title": "New 7' x 24' Heavy 8\" I-BEAM Frame Equipment Trailer TOOL BOX ~ Rampag",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: New 7' x 24' Heavy 8\" I-BEAM Frame Equipment Trailer TOOL BOX ~ Rampag. Context: new 7' x 24' heavy 8\" i-beam frame equipment trailer tool box ~ rampagnew 7' x 24' heavy 8\" i-beam frame equipment trailer tool box ~ rampag",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7910165982.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7909082654.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7908632169.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7908450166.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7908196413.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/trb/d/pompano-beach-new-x-22-beam-frame/7907610021.html",
+    "Job_Title": "New 7' x 22' I-BEAM Frame Equipment TOOLBOX Trailer w/ Spring Assisted",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: New 7' x 22' I-BEAM Frame Equipment TOOLBOX Trailer w/ Spring Assisted. Context: new 7' x 22' i-beam frame equipment toolbox trailer w/ spring assistednew 7' x 22' i-beam frame equipment toolbox trailer w/ spring assisted",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7907379561.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7906904889.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7906694000.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7906063595.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7905906304.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630027"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7905716182.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7905556215.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7904726804.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://miami.craigslist.org/brw/bfs/d/fort-lauderdale-used-iicl-40-hc/7904617751.html",
+    "Job_Title": "Used IICL 40' HC Shipping Containers MY 2021",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Used IICL 40' HC Shipping Containers MY 2021. Context: used iicl 40' hc shipping containers my 2021used iicl 40' hc shipping containers my 2021",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  },
+  {
+    "Source_URL": "https://sarasota.craigslist.org/grd/d/englewood-stop-aging-by-helping-me-get/7904658817.html",
+    "Job_Title": "Stop aging by helping me get Maqui berry and mulberry",
+    "Agency": "Verified Homeowner",
+    "Closing_Date": "ASAP",
+    "Raw_Text": "Request: Stop aging by helping me get Maqui berry and mulberry. Context: stop aging by helping me get maqui berry and mulberrystop aging by helping me get maqui berry and mulberry",
+    "Score": 25,
+    "Screened_At": "2026-02-07T15:41:08.630531"
+  }
+]

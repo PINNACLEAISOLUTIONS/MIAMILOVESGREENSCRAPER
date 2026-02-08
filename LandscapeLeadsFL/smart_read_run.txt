@@ -1,0 +1,22 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Hunting for Resident Projects and Community Requests...
+INFO:scrapers:Scout Agent: Hunting for Homeowner Gigs (Smart Read Mode)...
+INFO:scrapers:Smart Scout: Recovered 37 resident opportunities from Craigslist.
+Traceback (most recent call last):
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\main.py", line 47, in <module>
+    asyncio.run(main())
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\main.py", line 21, in main
+    raw_leads = await scout.discover_leads()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\agents.py", line 31, in discover_leads
+    results.extend(await self.craigslist_scraper.scrape())
+TypeError: 'NoneType' object is not iterable

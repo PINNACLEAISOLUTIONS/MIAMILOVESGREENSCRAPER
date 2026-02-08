@@ -1,0 +1,45 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Starting discovery across Government, Craigslist, and Social portals...
+INFO:scrapers:Scouting Miami-Dade Solicitations...
+Traceback (most recent call last):
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\main.py", line 47, in <module>
+    asyncio.run(main())
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\main.py", line 21, in main
+    raw_leads = await scout.discover_leads()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\agents.py", line 29, in discover_leads
+    miami_leads = await self.miami_scraper.scrape()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\scrapers.py", line 220, in scrape
+    content = await self.get_page_content(self.url)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\apis repo\public-apis\LandscapeLeadsFL\scrapers.py", line 20, in get_page_content
+    browser = await p.chromium.launch(headless=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Roaming\Python\Python311\site-packages\patchright\async_api\_generated.py", line 14240, in launch
+    await self._impl_obj.launch(
+  File "C:\Users\futur\AppData\Roaming\Python\Python311\site-packages\patchright\_impl\_browser_type.py", line 82, in launch
+    await self._channel.send(
+  File "C:\Users\futur\AppData\Roaming\Python\Python311\site-packages\patchright\_impl\_connection.py", line 52, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\futur\AppData\Roaming\Python\Python311\site-packages\patchright\_impl\_connection.py", line 500, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+patchright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\Users\futur\AppData\Local\ms-playwright\chromium_headless_shell-1208\chrome-headless-shell-win64\chrome-headless-shell.exe
+\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557
+\u2551 Looks like Playwright was just installed or updated.       \u2551
+\u2551 Please run the following command to download new browsers: \u2551
+\u2551                                                            \u2551
+\u2551     playwright install                                     \u2551
+\u2551                                                            \u2551
+\u2551 <3 Playwright Team                                         \u2551
+\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d

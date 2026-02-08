@@ -1,0 +1,49 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Hunting for Resident Projects...
+INFO:scrapers:Scout Agent: Hunting for Homeowner Projects (Deep Category Scan)...
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbs?query=overhaul
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbg?query=drainage
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/grd?query=hedges
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbs?query=stump
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/grd?query=planting
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbs?query=stump
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/hss?query=yard+cleanup
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/hss?query=drainage
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbs?query=sod
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/grd?query=overhaul
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/grd?query=stump
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/hss?query=planting
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/lbg?query=planting
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/grd?query=drainage
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbs?query=planting
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/hss?query=hedges
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/hss?query=hedges
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/hss?query=pavers
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/grd?query=hedges
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbs?query=landscaping
+INFO:scrapers:--- Found 0 raw listings on page. ---
+INFO:scrapers:Resident Scout: Successfully isolated 0 homeowner-specific projects.
+INFO:scrapers:Scout Agent: Fishing for Homeowners on Social Forums...
+INFO:scrapers:Scouting High-Value Regional Projects (Gov)...
+INFO:scrapers:Scouting Regional Institutional Opportunities (Broward)...
+INFO:agents:Scout Agent: Collected 0 potential raw leads.
+WARNING:LandscapeLeadsFL:No raw leads found during discovery phase.

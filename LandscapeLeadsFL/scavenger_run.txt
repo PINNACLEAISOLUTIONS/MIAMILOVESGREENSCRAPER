@@ -1,0 +1,39 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Hunting for Resident Projects...
+INFO:scrapers:Scout Agent: Hunting for Homeowner Projects (Deep Scan Mode)...
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbs?query=landscaping
+INFO:scrapers:Fallback: Found 76 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/lbg?query=planting
+INFO:scrapers:Fallback: Found 38 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbs?query=stump
+INFO:scrapers:Fallback: Found 62 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/hss?query=sod
+INFO:scrapers:Fallback: Found 100 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbg?query=mulch
+INFO:scrapers:Fallback: Found 0 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/hss?query=hedges
+INFO:scrapers:Fallback: Found 24 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbg?query=sod
+INFO:scrapers:Fallback: Found 32 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/lbg?query=overhaul
+INFO:scrapers:Fallback: Found 0 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/hss?query=stump
+INFO:scrapers:Fallback: Found 20 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/lbs?query=pavers
+INFO:scrapers:Fallback: Found 114 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/lbg?query=sod
+INFO:scrapers:Fallback: Found 34 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/grd?query=stump
+INFO:scrapers:Fallback: Found 108 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/grd?query=drainage
+INFO:scrapers:Fallback: Found 42 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/pbc/lbs?query=landscaping
+INFO:scrapers:Fallback: Found 44 candidate links.
+INFO:scrapers:Scanning Portal: https://miami.craigslist.org/search/brw/grd?query=landscaping
+INFO:scrapers:Fallback: Found 120 candidate links.
+INFO:scrapers:Scout Agent: Fishing for Homeowners on Social Forums...
+INFO:agents:Scout Agent: Collected 1 potential raw leads.
+INFO:agents:Screener Agent: Validating Resident Intent...
+INFO:agents:Screener Agent: Isolated 1 verified resident leads.
+INFO:agents:Formatter Agent: Success. Homeowner Project Portal updated with 1 entries.
+INFO:LandscapeLeadsFL:LandscapeLeadsFL: Workflow completed successfully!

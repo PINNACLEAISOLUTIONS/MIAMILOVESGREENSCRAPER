@@ -1,0 +1,55 @@
+INFO:LandscapeLeadsFL:Starting LandscapeLeadsFL Lead Generation Workflow...
+INFO:agents:Scout Agent: Starting discovery across Government, Craigslist, and Social portals...
+INFO:scrapers:Scouting Miami-Dade Solicitations for Landscape Projects...
+INFO:scrapers:Scouting Broward County BPRO for Landscape Projects...
+INFO:scrapers:Scout Agent: Launching High-Value Landscape Project Discovery (Patchright)...
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/bbb?query=garden+overhaul
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/bbb?query=garden+overhaul - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/bbb?query=garden+overhaul
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/bbb?query=garden+overhaul", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/sww?query=garden+overhaul
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/sww?query=garden+overhaul - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/sww?query=garden+overhaul
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/sww?query=garden+overhaul", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/bbb?query=mulch
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/bbb?query=mulch - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/bbb?query=mulch
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/bbb?query=mulch", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://fortlauderdale.craigslist.org/search/bbb?query=landscaping+installation
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=paver+repair
+INFO:scrapers:Scanning target: https://fortlauderdale.craigslist.org/search/bbb?query=landscape+design
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/lgs?query=landscaping+installation
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/lgs?query=landscaping+installation - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/lgs?query=landscaping+installation
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/lgs?query=landscaping+installation", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=sod+installation
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/lgs?query=drainage+landscape
+INFO:scrapers:Scanning target: https://fortlauderdale.craigslist.org/search/sww?query=landscape+design
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/sww?query=drainage+landscape
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/sww?query=drainage+landscape - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/sww?query=drainage+landscape
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/sww?query=drainage+landscape", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://miami.craigslist.org/search/sww?query=hardscape
+INFO:scrapers:Scanning target: https://fortlauderdale.craigslist.org/search/sww?query=mulch
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/sww?query=mulch
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/sww?query=mulch - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/sww?query=mulch
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/sww?query=mulch", waiting until "domcontentloaded"
+
+INFO:scrapers:Scanning target: https://palmbeach.craigslist.org/search/lgs?query=mulch
+ERROR:scrapers:Anti-Ban: Failed to fetch https://palmbeach.craigslist.org/search/lgs?query=mulch - Page.goto: net::ERR_NAME_NOT_RESOLVED at https://palmbeach.craigslist.org/search/lgs?query=mulch
+Call log:
+  - navigating to "https://palmbeach.craigslist.org/search/lgs?query=mulch", waiting until "domcontentloaded"
+
+INFO:scrapers:Smart Scout: Recovered 8 high-value project leads.
+INFO:scrapers:Scout Agent: Searching web for independent landscape projects...
+INFO:agents:Scout Agent: Discovered 8 potential raw leads.
+INFO:agents:Screener Agent: Filtering leads (Project-Focused Results)...
+INFO:agents:Screener Agent: 4 high-value project leads passed the screening.
+INFO:agents:Formatter Agent: Saved leads to C:/Users/futur/gemini_workspace/leads.csv and C:/Users/futur/gemini_workspace/leads.json
+INFO:LandscapeLeadsFL:LandscapeLeadsFL: Workflow completed successfully!
