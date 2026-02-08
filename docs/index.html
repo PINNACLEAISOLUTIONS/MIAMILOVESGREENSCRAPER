@@ -566,51 +566,75 @@
             startLiveScan();
         });
 
+        // Initialize live scan flow
         function startLiveScan() {
-            // Reset modal state
-            document.getElementById('scanTitle').textContent = '🤖 AI Agent Active';
-            document.getElementById('scanStatus').textContent = 'Initializing scan...';
-            document.getElementById('ping1').textContent = '⏳ Miami-Dade';
-            document.getElementById('ping2').textContent = '⏳ Broward';
-            document.getElementById('ping3').textContent = '⏳ Palm Beach';
-            document.getElementById('foundCount').style.display = 'none';
-            document.getElementById('scanCloseBtn').style.display = 'none';
-            document.getElementById('scanDesc').textContent = 'Scanning Craigslist, Reddit, and government bids...';
+            // Check for saved PAT
+            const token = localStorage.getItem('github_pat');
 
-            // Show modal
+            if (!token) {
+                const newToken = prompt("To run the Live Agent, enter your GitHub Personal Access Token (PAT):");
+                if (newToken) {
+                    localStorage.setItem('github_pat', newToken);
+                    triggerGitHubAction(newToken);
+                }
+            } else {
+                triggerGitHubAction(token);
+            }
+        }
+
+        async function triggerGitHubAction(token) {
+            // UI Update: Scan Started
+            document.getElementById('scanTitle').textContent = '🚀 Dispatching Agent...';
+            document.getElementById('scanStatus').textContent = 'Connecting to GitHub Actions...';
             document.getElementById('scrapeModal').style.display = 'flex';
 
-            // Animate scan progress
-            setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Crawling Craigslist...';
-                document.getElementById('ping1').textContent = '✅ Miami-Dade';
-            }, 800);
+            document.getElementById('ping1').textContent = '⏳ Authenticating';
+            document.getElementById('ping2').textContent = '⏳ Triggering Workflow';
+            document.getElementById('ping3').textContent = '⏳ Waiting for Agent';
 
-            setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Scanning Reddit communities...';
-                document.getElementById('ping2').textContent = '✅ Broward';
-            }, 1600);
+            try {
+                // Update with your actual Repo Details (Owner/Repo)
+                const REPO_OWNER = 'pinnacleaisolutions';
+                const REPO_NAME = 'MIAMILOVESGREENSCRAPER'; // Updated based on earlier context
 
-            setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Checking government bid portals...';
-                document.getElementById('ping3').textContent = '✅ Palm Beach';
-            }, 2400);
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/daily_scrape.yml/dispatches`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Authorization': `token ${token}`
+                    },
+                    body: JSON.stringify({
+                        ref: 'master' // or 'main' depending on your branch
+                    })
+                });
 
-            setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Processing results...';
-            }, 3200);
+                if (response.ok) {
+                    document.getElementById('scanTitle').textContent = '✅ Agent Deployed!';
+                    document.getElementById('scanStatus').textContent = 'The specialized scraper is running in the cloud.';
+                    document.getElementById('scanDesc').textContent = 'This process takes about 2-3 minutes. The dashboard will update automatically when finished.';
 
-            // Complete scan and reload leads
-            setTimeout(async () => {
-                await loadLeads();
-                document.getElementById('scanTitle').textContent = '✅ Scan Complete';
-                document.getElementById('scanStatus').textContent = 'All regions scanned successfully!';
-                document.getElementById('leadsFoundNum').textContent = allLeads.length;
-                document.getElementById('foundCount').style.display = 'block';
-                document.getElementById('scanDesc').textContent = 'Latest leads loaded and ready to view.';
-                document.getElementById('scanCloseBtn').style.display = 'inline-block';
-            }, 4000);
+                    document.getElementById('ping1').textContent = '✅ Authenticated';
+                    document.getElementById('ping2').textContent = '✅ Workflow Triggered';
+                    document.getElementById('ping3').textContent = '✅ Agent Running';
+
+                    // Cleanup / Close logic
+                    setTimeout(() => {
+                        document.getElementById('scanCloseBtn').style.display = 'inline-block';
+                        document.getElementById('scanCloseBtn').textContent = 'Close';
+                    }, 2000);
+                } else {
+                    throw new Error(`GitHub API Error: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('scanTitle').textContent = '❌ Trigger Failed';
+                document.getElementById('scanStatus').textContent = 'Could not start the agent.';
+                document.getElementById('scanDesc').textContent = 'Check your Token permissions (needs "workflow" scope) and try again.';
+                localStorage.removeItem('github_pat'); // Clear invalid token
+            }
         }
+
+
 
         function closeScanModal() {
             document.getElementById('scrapeModal').style.display = 'none';
