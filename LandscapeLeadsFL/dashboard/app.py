@@ -6,6 +6,12 @@ import threading
 
 app = Flask(__name__)
 
+# Ensure Playwright browsers are installed
+try:
+    subprocess.run(["playwright", "install", "chromium"], check=True)
+except Exception as e:
+    print(f"Warning: Could not install browsers: {e}")
+
 # Get absolute path to the directory containing this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Data is two levels up or in the same folder depending on structure, let's look in the parent folder
