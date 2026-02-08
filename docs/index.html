@@ -272,47 +272,50 @@
     </div>
 
     <script>
-        const leads = [
-            { agency: "Miami-Dade Parks", title: "Commercial Landscape Maintenance - Tropical Park", closing: "Feb 15, 2026", score: 18, url: "https://www.miamidade.gov/global/service.page?Mduid_service=ser1490814706420892", hot: true },
-            { agency: "Coral Gables", title: "Tree Trimming & Removal Services", closing: "Feb 20, 2026", score: 17, url: "https://www.coralgables.com/departments/public-works", hot: true },
-            { agency: "Broward County", title: "Irrigation System Installation", closing: "Feb 18, 2026", score: 16, url: "https://www.broward.org/Purchasing/Pages/default.aspx", hot: true },
-            { agency: "City of Miami", title: "Streetscape Beautification Project", closing: "Feb 22, 2026", score: 15, url: "https://www.miamigov.com/Government/Departments-Organizations/Department-of-Procurement", hot: true },
-            { agency: "Palm Beach County", title: "Native Plant Restoration", closing: "Feb 25, 2026", score: 14, url: "https://discover.pbcgov.org/Purchasing/Pages/default.aspx", hot: false },
-            { agency: "Fort Lauderdale", title: "Beach Park Landscaping", closing: "Feb 28, 2026", score: 13, url: "https://www.fortlauderdale.gov/government/departments-a-h/finance/procurement-services", hot: false },
-            { agency: "Hialeah", title: "Commercial Lawn Care Contract", closing: "Mar 1, 2026", score: 12, url: "https://www.hialeahfl.gov/176/Purchasing", hot: false },
-            { agency: "Pompano Beach", title: "Golf Course Maintenance", closing: "Mar 5, 2026", score: 11, url: "https://pompanobeachfl.gov/pages/purchasing", hot: false },
-            { agency: "Boca Raton", title: "Hardscape & Paver Installation", closing: "Mar 8, 2026", score: 10, url: "https://www.myboca.us/170/Purchasing", hot: false },
-            { agency: "Doral", title: "Commercial Property Landscaping", closing: "Mar 10, 2026", score: 9, url: "https://www.cityofdoral.com/government/finance/purchasing/", hot: false },
-            { agency: "Aventura", title: "Condo Landscape Management", closing: "Mar 12, 2026", score: 8, url: "https://www.cityofaventura.com/167/Purchasing", hot: false },
-            { agency: "Weston", title: "HOA Landscaping Services", closing: "Mar 15, 2026", score: 7, url: "https://www.westonfl.org/departments/finance/purchasing.aspx", hot: false }
-        ];
-
+        let allLeads = [];
         const grid = document.getElementById('leads-grid');
 
         function getStars(score) {
-            const fullStars = Math.floor(score / 4);
+            const normalized = Math.min(20, Math.max(0, score));
+            const fullStars = Math.floor(normalized / 4);
             return '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
         }
 
         function renderLeads(leadsToRender) {
             grid.innerHTML = '';
+            // Sort by score descending
+            leadsToRender.sort((a, b) => (b.Score || b.score || 0) - (a.Score || a.score || 0));
+
             // Update stats
+            const hotCount = leadsToRender.filter(l => (l.Score || l.score || 0) >= 15).length;
             document.getElementById('total-leads').textContent = leadsToRender.length;
-            document.getElementById('hot-leads').textContent = leadsToRender.filter(l => l.hot).length;
+            document.getElementById('hot-leads').textContent = hotCount;
+
+            if (leadsToRender.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; padding:3rem; color:var(--text-secondary);">No leads found. Try a different search.</div>';
+                return;
+            }
 
             leadsToRender.forEach(lead => {
+                const score = lead.Score || lead.score || 0;
+                const isHot = score >= 15;
+                const title = lead.Job_Title || lead.title || 'Untitled Lead';
+                const agency = lead.Agency || lead.agency || 'Unknown';
+                const closing = lead.Closing_Date || lead.closing || 'ASAP';
+                const url = lead.Source_URL || lead.url || '#';
+
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    ${lead.hot ? '<div class="badge-hot">🔥 HOT LEAD</div>' : ''}
-                    <div class="stars">${getStars(lead.score)}</div>
-                    <div class="card-tag">${lead.agency}</div>
-                    <div class="card-title">${lead.title}</div>
+                    ${isHot ? '<div class="badge-hot">🔥 HOT LEAD</div>' : ''}
+                    <div class="stars">${getStars(score)}</div>
+                    <div class="card-tag">${agency}</div>
+                    <div class="card-title">${title}</div>
                     <div class="card-meta">
-                        <div><b>Closing:</b> ${lead.closing}</div>
-                        <div><b>Score:</b> ${lead.score}/20</div>
+                        <div><b>Closing:</b> ${closing}</div>
+                        <div><b>Score:</b> ${score}/20</div>
                     </div>
-                    <a href="${lead.url}" target="_blank" class="btn">View Details</a>
+                    <a href="${url}" target="_blank" class="btn">View Details</a>
                 `;
                 grid.appendChild(card);
             });
@@ -320,11 +323,24 @@
 
         function filterLeads() {
             const term = document.getElementById('leadSearch').value.toLowerCase();
-            const filtered = leads.filter(l =>
-                l.title.toLowerCase().includes(term) ||
-                l.agency.toLowerCase().includes(term)
-            );
+            const filtered = allLeads.filter(l => {
+                const title = (l.Job_Title || l.title || '').toLowerCase();
+                const agency = (l.Agency || l.agency || '').toLowerCase();
+                return title.includes(term) || agency.includes(term);
+            });
             renderLeads(filtered);
+        }
+
+        // Fetch leads from JSON file
+        async function loadLeads() {
+            try {
+                const response = await fetch('leads.json?' + Date.now()); // Cache bust
+                allLeads = await response.json();
+                renderLeads(allLeads);
+            } catch (error) {
+                console.error('Error loading leads:', error);
+                grid.innerHTML = '<div style="text-align:center; padding:3rem; color:#ff6b6b;">Error loading leads. Please refresh.</div>';
+            }
         }
 
         // Button click handler
@@ -332,8 +348,8 @@
             document.getElementById('scrapeModal').style.display = 'flex';
         });
 
-        // Initial render
-        renderLeads(leads);
+        // Load leads on page load
+        loadLeads();
     </script>
 </body>
 
