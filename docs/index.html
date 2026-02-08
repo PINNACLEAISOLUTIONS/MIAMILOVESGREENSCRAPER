@@ -466,8 +466,12 @@
 
         function renderLeads(leadsToRender) {
             grid.innerHTML = '';
-            // Sort by score descending
-            leadsToRender.sort((a, b) => (b.Score || b.score || 0) - (a.Score || a.score || 0));
+            // Sort by date descending (newest first)
+            leadsToRender.sort((a, b) => {
+                const dateA = new Date(a.Screened_At || '2020-01-01');
+                const dateB = new Date(b.Screened_At || '2020-01-01');
+                return dateB - dateA;
+            });
 
             // Update stats
             const hotCount = leadsToRender.filter(l => (l.Score || l.score || 0) >= 15).length;
