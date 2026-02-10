@@ -574,10 +574,18 @@
         });
 
         async function triggerWorkflow() {
-            // Calls our Netlify serverless function — token is safe on the server
-            const resp = await fetch('/api/trigger-scrape', { method: 'POST' });
-            const data = await resp.json();
-            return data.success === true;
+            try {
+                const resp = await fetch('/api/trigger-scrape', { method: 'POST' });
+                const data = await resp.json();
+                if (!resp.ok || !data.success) {
+                    console.error('Trigger error:', data);
+                    return { success: false, error: data.error || data.detail || 'Unknown server error' };
+                }
+                return { success: true };
+            } catch (e) {
+                console.error('Network error:', e);
+                return { success: false, error: e.message };
+            }
         }
 
         async function waitForFreshData(oldCount, startTime) {
@@ -624,20 +632,19 @@
             // Step 1: Trigger the workflow
             const oldCount = allLeads.length;
             const startTime = Date.now();
-            let triggered = false;
+            let result = { success: false, error: 'Unknown' };
 
             try {
-                triggered = await triggerWorkflow();
+                result = await triggerWorkflow();
             } catch (e) {
-                console.error('Trigger failed:', e);
+                result.error = e.message;
             }
 
-            if (!triggered) {
-                document.getElementById('scanTitle').textContent = '⚠️ Could Not Trigger';
-                document.getElementById('scanStatus').textContent =
-                    'Falling back to latest cached data...';
-                document.getElementById('scanDesc').textContent =
-                    'The GitHub token may have expired. Showing most recent data instead.';
+            if (!result.success) {
+                document.getElementById('scanTitle').textContent = '⚠️ Trigger Failed';
+                document.getElementById('scanStatus').textContent = 'Error: ' + (result.error || 'Check console');
+                document.getElementById('scanDesc').innerHTML =
+                    `Could not start the scraper.<br><br><b>Reason:</b> ${result.error}<br>Using cached data instead.`;
                 await loadLeads();
                 document.getElementById('scanCloseBtn').style.display = 'inline-block';
                 document.getElementById('scanCloseBtn').textContent = 'View Cached Results';
