@@ -1,0 +1,26 @@
+{
+  "name": "public-apis",
+  "version": "1.0.0",
+  "description": "![Miami Loves Green Dashboard](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)\r ![Tech Stack](https://img.shields.io/badge/Stack-Python%20|%20React%20|%20MCP-blue?style=for-the-badge)\r ![Lead Source](https://img.shields.io/badge/Source-Craigslist%20|%20Reddit%20|%20Exa-orange?style=for-the-badge)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER/issues"
+  },
+  "homepage": "https://github.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER#readme",
+  "devDependencies": {
+    "@netlify/functions": "^5.1.2"
+  }
+}

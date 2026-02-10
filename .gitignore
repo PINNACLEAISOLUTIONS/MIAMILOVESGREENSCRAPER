@@ -128,3 +128,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+search-agent-base/
+
+node_modules/
+.netlify/
+package-lock.json

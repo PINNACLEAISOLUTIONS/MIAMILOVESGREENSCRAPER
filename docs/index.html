@@ -260,7 +260,7 @@
             <button id="liveBtn" style="background: linear-gradient(135deg, var(--neon-green), var(--neon-teal)); 
                            color: #000; border: none; padding: 1rem 2rem; border-radius: 25px; 
                            font-weight: 700; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
-                🔄 REFRESH DATA
+                🔍 LIVE SCRAPE
             </button>
         </div>
 
@@ -563,67 +563,141 @@
             }
         }
 
-        // Button click handler - starts animated scan
+        // ============================================================
+        // LIVE SCRAPE — Triggers via secure Netlify proxy (token hidden)
+        // ============================================================
+
         document.getElementById('liveBtn').addEventListener('click', function () {
             startLiveScan();
         });
 
-        // Initialize live scan flow
-        function startLiveScan() {
-            // Reset modal state
-            document.getElementById('scanTitle').textContent = '🤖 Checking Auto-Scraper...';
-            document.getElementById('scanStatus').textContent = 'Connecting to GitHub Actions Pipeline...';
+        async function triggerWorkflow() {
+            // Calls our Netlify serverless function — token is safe on the server
+            const resp = await fetch('/api/trigger-scrape', { method: 'POST' });
+            const data = await resp.json();
+            return data.success === true;
+        }
 
+        async function waitForFreshData(oldCount, startTime) {
+            // Poll leads.json every 15s for up to 3 minutes
+            const maxWait = 180000; // 3 min
+            const pollInterval = 15000; // 15 sec
 
-            document.getElementById('ping1').textContent = '⏳ Fetching Latest Data';
-            document.getElementById('ping2').textContent = '⏳ Checking New Leads';
-            document.getElementById('ping3').textContent = '⏳ Refreshing Dashboard';
+            while (Date.now() - startTime < maxWait) {
+                await new Promise(r => setTimeout(r, pollInterval));
+                try {
+                    const resp = await fetch('leads.json?' + Date.now());
+                    const data = await resp.json();
+                    // Check if data changed (new timestamp or different count)
+                    if (data.length !== oldCount ||
+                        (data[0] && data[0].Screened_At &&
+                            new Date(data[0].Screened_At) > new Date(startTime))) {
+                        return data;
+                    }
+                } catch (e) { /* keep polling */ }
 
+                // Update progress dots
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('scanStatus').textContent =
+                    `Scraping South Florida... (${elapsed}s elapsed)`;
+            }
+            return null; // Timed out
+        }
+
+        async function startLiveScan() {
+            // Reset modal
+            document.getElementById('scanTitle').textContent = '🤖 AI Agent Activating...';
+            document.getElementById('scanStatus').textContent = 'Triggering live scrape...';
+            document.getElementById('ping1').textContent = '⏳ Miami-Dade';
+            document.getElementById('ping2').textContent = '⏳ Broward';
+            document.getElementById('ping3').textContent = '⏳ Palm Beach';
             document.getElementById('foundCount').style.display = 'none';
             document.getElementById('scanCloseBtn').style.display = 'none';
-            document.getElementById('scanDesc').textContent = 'The scraper runs every hour via GitHub Actions. Checking for latest results...';
+            document.getElementById('scanDesc').textContent =
+                'Launching Craigslist scraper via GitHub Actions...';
 
             // Show modal
             document.getElementById('scrapeModal').style.display = 'flex';
 
-            // Simulate Check Sequence (Visual Feedback Only)
-            setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Fetching latest leads.json...';
-                document.getElementById('ping1').textContent = '✅ Data Loaded';
-            }, 800);
+            // Step 1: Trigger the workflow
+            const oldCount = allLeads.length;
+            const startTime = Date.now();
+            let triggered = false;
+
+            try {
+                triggered = await triggerWorkflow();
+            } catch (e) {
+                console.error('Trigger failed:', e);
+            }
+
+            if (!triggered) {
+                document.getElementById('scanTitle').textContent = '⚠️ Could Not Trigger';
+                document.getElementById('scanStatus').textContent =
+                    'Falling back to latest cached data...';
+                document.getElementById('scanDesc').textContent =
+                    'The GitHub token may have expired. Showing most recent data instead.';
+                await loadLeads();
+                document.getElementById('scanCloseBtn').style.display = 'inline-block';
+                document.getElementById('scanCloseBtn').textContent = 'View Cached Results';
+                return;
+            }
+
+            // Step 2: Workflow triggered! Show progress
+            document.getElementById('scanTitle').textContent = '🤖 Live Scrape Running!';
+            document.getElementById('scanStatus').textContent = 'Scraping Craigslist now...';
+            document.getElementById('scanDesc').textContent =
+                'The scraper is running on GitHub servers. This takes ~2 minutes...';
 
             setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Verifying latest entries...';
-                document.getElementById('ping2').textContent = '✅ Verified';
-            }, 1600);
+                document.getElementById('ping1').textContent = '✅ Miami-Dade';
+                document.getElementById('scanStatus').textContent =
+                    'Scanning Broward County...';
+            }, 20000);
 
             setTimeout(() => {
-                document.getElementById('scanStatus').textContent = 'Finalizing view...';
-                document.getElementById('ping3').textContent = '✅ Updated';
-            }, 2400);
+                document.getElementById('ping2').textContent = '✅ Broward';
+                document.getElementById('scanStatus').textContent =
+                    'Scanning Palm Beach...';
+            }, 50000);
 
-            // Complete and verification
-            setTimeout(async () => {
-                await loadLeads(); // Reloads the leads.json file
+            setTimeout(() => {
+                document.getElementById('ping3').textContent = '✅ Palm Beach';
+                document.getElementById('scanStatus').textContent =
+                    'Processing & filtering leads...';
+            }, 80000);
 
-                // Calculate "New" leads (mock logic for UX or real date comp)
-                document.getElementById('scanTitle').textContent = '✅ Dashboard Updated';
-                document.getElementById('scanStatus').textContent = 'Showing latest available leads.';
+            // Step 3: Wait for fresh data
+            const freshData = await waitForFreshData(oldCount, startTime);
+
+            if (freshData) {
+                allLeads = freshData;
+                renderLeads(allLeads);
+                document.getElementById('scanTitle').textContent = '✅ Fresh Leads Found!';
+                document.getElementById('scanStatus').textContent =
+                    `Live scrape complete — ${allLeads.length} leads in database.`;
                 document.getElementById('leadsFoundNum').textContent = allLeads.length;
                 document.getElementById('foundCount').style.display = 'block';
-                document.getElementById('scanDesc').innerHTML = 'Your <b>Hourly Auto-Scraper</b> is active via GitHub Actions.<br>New leads appear automatically every hour.';
-                document.getElementById('scanCloseBtn').style.display = 'inline-block';
-                document.getElementById('scanCloseBtn').textContent = 'View Leads';
-            }, 3000);
+                document.getElementById('scanDesc').innerHTML =
+                    '<b>Live scrape just completed!</b><br>Showing freshly scraped results.';
+                document.getElementById('ping1').textContent = '✅ Miami-Dade';
+                document.getElementById('ping2').textContent = '✅ Broward';
+                document.getElementById('ping3').textContent = '✅ Palm Beach';
+            } else {
+                // Timed out — still load latest data
+                await loadLeads();
+                document.getElementById('scanTitle').textContent = '✅ Dashboard Updated';
+                document.getElementById('scanStatus').textContent =
+                    'Scrape still running. Data will refresh shortly.';
+                document.getElementById('leadsFoundNum').textContent = allLeads.length;
+                document.getElementById('foundCount').style.display = 'block';
+                document.getElementById('scanDesc').innerHTML =
+                    'The scraper may still be running. <b>Refresh the page in 1 minute</b> for the latest results.';
+            }
+
+            document.getElementById('scanCloseBtn').style.display = 'inline-block';
+            document.getElementById('scanCloseBtn').textContent = '✓ View Results';
+            updateTimestamp();
         }
-
-        /* 
-           REMOVED: triggerGitHubAction() 
-           Reason: User requested removal of Token complexity. 
-           Automation is now handled by .github/workflows/daily_scrape.yml 
-        */
-
-
 
         function closeScanModal() {
             document.getElementById('scrapeModal').style.display = 'none';
