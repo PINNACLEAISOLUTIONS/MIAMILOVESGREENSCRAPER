@@ -212,7 +212,6 @@ class GoogleSearchNavigator(BaseScraper):
             queries = [
                 'site:reddit.com/r/miami "landscaper" "recommend"',
                 'site:reddit.com/r/fortlauderdale "landscaping" "need"',
-                'site:reddit.com/r/WestPalmBeach "landscaper" "hire"',
                 'site:nextdoor.com "broward" "need" "landscaping"',
             ]
             for q in queries:
@@ -256,10 +255,6 @@ class GoogleSearchNavigator(BaseScraper):
                 (
                     "https://www.reddit.com/r/fortlauderdale/search/?q=landscaping&restrict_sr=1&sort=new",
                     "Ft Lauderdale",
-                ),
-                (
-                    "https://www.reddit.com/r/WestPalmBeach/search/?q=landscaper&restrict_sr=1&sort=new",
-                    "West Palm Beach",
                 ),
             ]
 

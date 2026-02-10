@@ -3,3 +3,9 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Proxy /api requests to the function
+[[redirects]]
+  from = "/api/trigger-scrape"
+  to = "/.netlify/functions/trigger-scrape"
+  status = 200

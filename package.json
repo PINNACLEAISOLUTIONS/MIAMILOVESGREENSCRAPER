@@ -22,5 +22,8 @@
   "homepage": "https://github.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER#readme",
   "devDependencies": {
     "@netlify/functions": "^5.1.2"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
   }
 }
