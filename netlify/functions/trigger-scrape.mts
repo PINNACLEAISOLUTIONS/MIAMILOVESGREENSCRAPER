@@ -1,7 +1,6 @@
 import type { Config } from "@netlify/functions";
 
-// Netlify global is injected at runtime by the Netlify platform
-declare const Netlify: { env: { get(key: string): string | undefined } };
+
 
 export default async (req: Request) => {
     // Only allow POST requests
@@ -12,15 +11,16 @@ export default async (req: Request) => {
         });
     }
 
-    // Get the token from Netlify environment variables (HIDDEN from users)
-    const token = Netlify.env.get("GH_ACTION_TOKEN");
-    const owner = Netlify.env.get("GH_OWNER") || "PINNACLEAISOLUTIONS";
-    const repo = Netlify.env.get("GH_REPO") || "MIAMILOVESGREENSCRAPER";
-    const workflow = Netlify.env.get("GH_WORKFLOW") || "daily_scrape.yml";
+    // Get token from process.env (standard Node.js patterns work best in Netlify Functions)
+    const token = process.env.GH_ACTION_TOKEN;
+    const owner = process.env.GH_OWNER || "PINNACLEAISOLUTIONS";
+    const repo = process.env.GH_REPO || "MIAMILOVESGREENSCRAPER";
+    const workflow = process.env.GH_WORKFLOW || "daily_scrape.yml";
 
     if (!token) {
+        console.error("Missing GH_ACTION_TOKEN in environment variables");
         return new Response(
-            JSON.stringify({ error: "GitHub token not configured" }),
+            JSON.stringify({ error: "Server configuration error: Token missing" }),
             { status: 500, headers: { "Content-Type": "application/json" } }
         );
     }

@@ -379,6 +379,23 @@ def update_leads_json(new_leads: list) -> int:
     return len(final)
 
 
+def update_metadata(total_leads: int, new_found: int) -> None:
+    """Write metadata about this run so the dashboard knows we checked."""
+    repo_root = os.getcwd()
+    meta_path = os.path.join(repo_root, "docs", "last_run.json")
+
+    data = {
+        "last_run": datetime.utcnow().isoformat(),
+        "total_leads": total_leads,
+        "new_leads_found": new_found,
+        "status": "success",
+    }
+
+    with open(meta_path, "w") as f:
+        json.dump(data, f, indent=2)
+    logger.info("📄 docs/last_run.json updated")
+
+
 # ============================================================
 # MAIN
 # ============================================================
@@ -398,10 +415,13 @@ async def main() -> None:
 
     if not leads:
         logger.info("No new leads found this run. Keeping existing data.")
+        # Still update metadata so dashboard knows we checked
+        update_metadata(0, 0)
         return
 
     # Update local file (GitHub Actions will commit & push this)
     total = update_leads_json(leads)
+    update_metadata(total, len(leads))
 
     logger.info("=" * 60)
     logger.info(f"✅ DONE — {len(leads)} new leads found, {total} total in database")

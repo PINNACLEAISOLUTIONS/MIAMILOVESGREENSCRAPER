@@ -706,23 +706,39 @@
         }
 
         // Show last-updated time from the newest lead
-        function updateTimestamp() {
-            if (allLeads.length > 0) {
+        // Show last-updated time from metadata or newest lead
+        const META_URL = 'https://raw.githubusercontent.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER/master/docs/last_run.json';
+
+        async function updateTimestamp() {
+            let lastRun = null;
+            try {
+                const resp = await fetch(META_URL + '?' + Date.now());
+                if (resp.ok) {
+                    const meta = await resp.json();
+                    lastRun = new Date(meta.last_run);
+                }
+            } catch (e) { console.log('No metadata found yet'); }
+
+            if (!lastRun && allLeads.length > 0) {
+                // Fallback to newest lead if metadata missing
                 const newest = allLeads.reduce((a, b) => {
                     const da = new Date(a.Screened_At || '2000-01-01');
                     const db = new Date(b.Screened_At || '2000-01-01');
                     return da > db ? a : b;
                 });
-                const d = new Date(newest.Screened_At);
+                lastRun = new Date(newest.Screened_At);
+            }
+
+            if (lastRun) {
                 const now = new Date();
-                const diffMs = now - d;
+                const diffMs = now - lastRun;
                 const diffMins = Math.floor(diffMs / 60000);
                 const diffHrs = Math.floor(diffMins / 60);
                 let ago = '';
                 if (diffMins < 60) ago = `${diffMins} min ago`;
                 else if (diffHrs < 24) ago = `${diffHrs} hr${diffHrs > 1 ? 's' : ''} ago`;
-                else ago = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                document.getElementById('lastUpdated').textContent = `🟢 Auto-Scraper Active • Last update: ${ago}`;
+                else ago = lastRun.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                document.getElementById('lastUpdated').textContent = `🟢 Auto-Scraper Active • Last check: ${ago}`;
             }
         }
 
