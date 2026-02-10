@@ -551,10 +551,12 @@
             renderLeads(filtered);
         }
 
-        // Fetch leads from JSON file
+        // Fetch leads from JSON file (Directly from GitHub for zero-latency updates)
+        const DATA_URL = 'https://raw.githubusercontent.com/PINNACLEAISOLUTIONS/MIAMILOVESGREENSCRAPER/master/docs/leads.json';
+
         async function loadLeads() {
             try {
-                const response = await fetch('leads.json?' + Date.now()); // Cache bust
+                const response = await fetch(DATA_URL + '?' + Date.now()); // Cache bust
                 allLeads = await response.json();
                 renderLeads(allLeads);
             } catch (error) {
@@ -586,7 +588,7 @@
             while (Date.now() - startTime < maxWait) {
                 await new Promise(r => setTimeout(r, pollInterval));
                 try {
-                    const resp = await fetch('leads.json?' + Date.now());
+                    const resp = await fetch(DATA_URL + '?' + Date.now());
                     const data = await resp.json();
                     // Check if data changed (new timestamp or different count)
                     if (data.length !== oldCount ||
